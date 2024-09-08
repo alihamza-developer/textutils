@@ -29,9 +29,9 @@ function Converter() {
         <>
 
             <div className="card p-0 my-4">
-                <div className="card-header bg-primary text-white d-flex justify-content-between">
+                <div className="card-header bg-dark text-white d-flex justify-content-between">
                     <span>Case Converter</span>
-                    <span>240 words and 100 characters</span>
+                    <span>{text.split(" ").length} words and {text.length} characters</span>
                 </div>
 
                 <div className="card-body">
@@ -47,7 +47,7 @@ function Converter() {
                         <div className="col-md-4">
                             <ol className="list-group">
                                 {Object.keys(AvailableCases).map((key, index) => (
-                                    <li key={index} className="list-group-item list-group-item-action" onClick={() => setText(CaseConverter(key))}>{AvailableCases[key]}</li>
+                                    <li key={index} className="list-group-item list-group-item-action" onClick={() => setText(CaseConverter(key))}><b>{AvailableCases[key]}</b></li>
                                 ))}
                             </ol>
                         </div>
