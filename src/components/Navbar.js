@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Navbar = (props) => {
     let { heading } = props;
@@ -36,5 +37,11 @@ const Navbar = (props) => {
         </>
     )
 }
+
+
+Navbar.propTypes = {
+    heading: PropTypes.string.isRequired,
+}
+
 
 export default Navbar;
