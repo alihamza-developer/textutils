@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Converter() {
+function Converter(props) {
 
     const [text, setText] = useState(''),
         handleOnChange = (e) => setText(e.target.value), // Handle On Change
@@ -14,12 +14,17 @@ function Converter() {
     const CaseConverter = (type) => {
         switch (type) {
             case 'upper':
+                props.toggleAlert('success', 'Text converted to UpperCase');
+
                 return text.toUpperCase();
             case 'lower':
+                props.toggleAlert('success', 'Text converted to LowerCase');
                 return text.toLowerCase();
             case 'pascal':
+                props.toggleAlert('success', 'Text converted to PascalCase');
                 return text.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
             default:
+                props.toggleAlert('danger', 'Invalid Case');
                 return text;
         }
     }
@@ -46,9 +51,9 @@ function Converter() {
 
                         <div className="col-md-4">
                             <ol className="list-group">
-                                {Object.keys(AvailableCases).map((key, index) => (
+                                {Object.keys(AvailableCases).map((key, index) =>
                                     <li key={index} className="list-group-item list-group-item-action" onClick={() => setText(CaseConverter(key))}><b>{AvailableCases[key]}</b></li>
-                                ))}
+                                )}
                             </ol>
                         </div>
 
